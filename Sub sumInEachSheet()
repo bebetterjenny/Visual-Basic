@@ -29,3 +29,16 @@ For Each Current In Worksheets
 Next
     
 End Sub
+
+Function ConvertToLetter(iCol) As String
+   Dim iAlpha As Integer
+   Dim iRemainder As Integer
+   iAlpha = Int(iCol / 27)
+   iRemainder = iCol - (iAlpha * 26)
+   If iAlpha > 0 Then
+      ConvertToLetter = Chr(iAlpha + 64)
+   End If
+   If iRemainder > 0 Then
+      ConvertToLetter = ConvertToLetter & Chr(iRemainder + 64)
+   End If
+End Function
