@@ -1,7 +1,15 @@
-Sub sumInEachSheet()
-
-
+Sub test()
 '
+
+
+
+' Add a new sheet to record all the sum
+' You can change the sheet name but remember to the change it in the last 2 line!
+Sheets.Add(After:=Sheets(Sheets.Count)).Name = "sumInEachSheet"
+Dim i As Integer
+i = 2
+
+
 ' Declare Current as a worksheet object variable.
 Dim Current As Worksheet
 
@@ -10,11 +18,12 @@ For Each Current In Worksheets
     
     Dim lastColNum As Integer
     Dim lastCol As String
-    lastColNum = Cells(14, Columns.Count).End(xlToLeft).Column
+    lastColNum = Current.Cells(14, Columns.Count).End(xlToLeft).Column
     lastCol = ConvertToLetter(lastColNum)
     
     Dim lastRow As Integer
-    lastRow = Cells(Rows.Count, 2).End(xlUp).Row + 2
+    lastRow = Current.Cells(Rows.Count, 2).End(xlUp).Row + 2
+    Current.Select
 
     'change the range to sum: 16 & 85
     Dim calRange As String
@@ -23,9 +32,15 @@ For Each Current In Worksheets
     sumRange = lastCol & "16:" & lastCol & "85"
     Dim sum As Integer
     sum = WorksheetFunction.sum(Range(sumRange))
-    Range(calRange).Value = sum
+    Range(calRange) = sum
+    
+    
+    'change the sheet name if you changed it before
+    Sheets("sumInEachSheet").Range("B" & i).Value = Current.Range(calRange)
 
-        
+    
+    i = i + 1
+    
 Next
     
 End Sub
