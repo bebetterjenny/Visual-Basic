@@ -1,0 +1,31 @@
+Sub sumInEachSheet()
+
+
+'
+' Declare Current as a worksheet object variable.
+Dim Current As Worksheet
+
+' Loop through all of the worksheets in the active workbook.
+For Each Current In Worksheets
+    
+    Dim lastColNum As Integer
+    Dim lastCol As String
+    lastColNum = Cells(14, Columns.Count).End(xlToLeft).Column
+    lastCol = ConvertToLetter(lastColNum)
+    
+    Dim lastRow As Integer
+    lastRow = Cells(Rows.Count, 2).End(xlUp).Row + 2
+
+    'change the range to sum: 16 & 85
+    Dim calRange As String
+    calRange = lastCol & lastRow
+    Dim sumRange As String
+    sumRange = lastCol & "16:" & lastCol & "85"
+    Dim sum As Integer
+    sum = WorksheetFunction.sum(Range(sumRange))
+    Range(calRange).Value = sum
+
+        
+Next
+    
+End Sub
