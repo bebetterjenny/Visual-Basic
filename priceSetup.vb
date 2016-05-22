@@ -15,6 +15,10 @@ Dim i As Integer
 
 'Add a new sheet
 Sheets.Add(After:=Sheets(Sheets.Count)).Name = "newPrice"
+Range("A1").Value = "Item#"
+Range("B1").Value = "Price"
+Range("C1").Value = "Price Level"
+Range("D1").Value = "Quantity"
 
 'Same product starts from 2nd row
 For i = 2 To lastRow
