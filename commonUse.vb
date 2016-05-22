@@ -35,6 +35,22 @@ Columns("A:A").Select
 ActiveSheet.Paste
 
 
+‘Delete blank rows
+Dim lastRow As Integer
+lastRow = Cells(Rows.Count, 1).End(xlUp).Row
+Dim i As Integer
+i = 1
+Do Unitl i = lastRow
+   If IsEmpty(Range("A" & i).Value) = True Then
+      Rows(i & ":" & i).Select
+      Selection.Delete Shift:=xlUp
+      i = i - 1
+      lastRow = lastRow - 1
+   End If
+   i = i + 1
+Loop
+
+
 
 
 End Sub
