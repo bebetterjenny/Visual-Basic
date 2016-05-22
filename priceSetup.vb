@@ -1,6 +1,13 @@
 Sub priceSetup()
 
+'Make sure to keep the column order in the oringinal sheet as the template below:
+'A       B          C        D         E         F         G       H        I        J
+'Item    0-INDIV    1-Ret    2_R6pc    3-dist    4-whol    5-VIP   Qty 1    Qty 7    Qty 121
+'Split the full product in several excel files
+'Do not put over 2800 rows in each oringinal sheet
 'Always keep attributes in the top row
+
+
 Dim lastRow As Integer
 lastRow = Cells(Rows.Count, 1).End(xlUp).Row
 Dim i As Integer
