@@ -50,7 +50,7 @@ Dim j As Integer
             If k = 6 Then
                 pColNum = pColNum + j - 1
                 pCol = ConvertToLetter(pColNum)
-                MsgBox (pCol)
+                'MsgBox (pCol)
                 Sheets("Sheet1").Select
                 Range(pCol & i).Select
                 Selection.Copy
