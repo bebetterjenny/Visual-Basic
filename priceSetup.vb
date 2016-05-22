@@ -24,7 +24,7 @@ Range("D1").Value = "Quantity"
 For i = 2 To lastRow
 Dim j As Integer
 
-    '3 different price level
+    '3 different price levels
     For j = 1 To 3
         Dim k As Integer
         Dim pColNum As Integer
