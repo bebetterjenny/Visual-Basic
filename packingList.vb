@@ -18,7 +18,7 @@ Sub packingList()
 'Sheet2 is the calculated packinglist
 'Sheet3
 'Copy from packingList
-    Sheet2.Select
+    ActiveWorkbook.Sheets("Sheet2").Select
     Sheet2.Cells.ClearContents
     
     Sheet1.Select
