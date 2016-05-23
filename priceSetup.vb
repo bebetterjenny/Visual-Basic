@@ -7,11 +7,9 @@ Sub priceSetup()
 'Do not put over 2800 rows in each oringinal sheet
 'Always keep attributes in the top row
 
-
 Dim lastRow As Integer
 lastRow = Cells(Rows.Count, 1).End(xlUp).Row
 Dim i As Integer
-
 
 'Add a new sheet
 Sheets.Add(After:=Sheets(Sheets.Count)).Name = "newPrice"
@@ -23,7 +21,6 @@ Range("D1").Value = "Quantity"
 'Same product starts from 2nd row
 For i = 2 To lastRow
 Dim j As Integer
-
     '3 different price levels
     For j = 1 To 3
         Dim k As Integer
@@ -34,7 +31,6 @@ Dim j As Integer
         Dim r As Integer
         Dim s As Integer
         s = 21 * i + 7 * j - 47
-        
         
         'A column
         'Locate Item#
@@ -48,7 +44,6 @@ Dim j As Integer
             ActiveSheet.Paste
         Next
         
-        
         'B column
         'Setup price in the same level
         For k = 0 To 6
@@ -56,7 +51,6 @@ Dim j As Integer
             pColNum = 2 + k
             pCol = ConvertToLetter(pColNum)
             'MsgBox (r)
-
             'Setup new price
             If k = 6 Then
                 pColNum = pColNum + j - 1
@@ -79,7 +73,6 @@ Dim j As Integer
                 ActiveSheet.Paste
             End If
         Next
-        
         
         'C column
         'Get attributes value in C column
@@ -108,11 +101,8 @@ Dim j As Integer
                 Range("D" & (s + k)).Value = 121
             Next
         End If
-        
     Next
-    
 Next
-
 End Sub
 
 Function ConvertToLetter(iCol) As String
