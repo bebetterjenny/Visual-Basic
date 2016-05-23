@@ -1,4 +1,4 @@
-Sub packingList1()
+Sub packingList()
 
 
 '1.Remove branches and items starts with "Z","SCP102" and Carton in the original packinglist
