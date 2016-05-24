@@ -1,8 +1,8 @@
 Sub packingList()
 
 
-'1.Remove branches and items starts with "Z","SCP102" and Carton in the original packinglist
-'1.在原始装箱单中去掉分店，去掉“Z", "SCP102"开头, 和Carton产品
+'1.Remove branches in the original packinglist
+'1.在原始装箱单中去掉分店
 
 '2.Copy and paste value from original packinglist into Sheet1
 '2.复制原始装箱单中全部值到Sheet1
