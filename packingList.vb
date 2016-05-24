@@ -113,7 +113,7 @@ Sub packingList()
     'Calculate weight
     Range("O1").Value = "Weight(lb)/Unit"
     Range("O2").Select
-    ActiveCell.FormulaR1C1 = "=LEFT(RC[-11]/RC[-12],4)"
+    ActiveCell.FormulaR1C1 = "=LEFT(RC[-11]/RC[-12],5)"
     Range("O2").Select
     Selection.AutoFill Destination:=Range("O2:O" & lastRow)
     Range("P1").Value = "Weight(oz)/Unit"
@@ -170,7 +170,7 @@ Sub packingList()
     Range("J2").Select
     ActiveCell.FormulaR1C1 = "=VLOOKUP(Sheet3!RC1,Sheet2!C1:C16,16,0)"
     
-    
+    MsgBox ("查到新产品添加到Sheet3中，然后自动填充完整")
     
     
 End Sub
