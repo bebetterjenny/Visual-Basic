@@ -57,6 +57,24 @@ Sub packingList()
     Loop
     
     
+    'Sumif and remove duplicate
+    Range("P2").Select
+    ActiveCell.FormulaR1C1 = "=SUMIF(C[-15],C[-15],C[-14])"
+    Range("P2").Select
+    Selection.AutoFill Destination:=Range("P2:P" & lastRow)
+    Range("P2:P" & lastRow).Select
+    Selection.Copy
+    Range("B2").Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Columns("A:O").Select
+    Application.CutCopyMode = False
+    ActiveSheet.Range("$A$1:$O$" & lastRow).RemoveDuplicates Columns:=1, Header:=xlYes
+    lastRow = Cells(Rows.Count, 1).End(xlUp).Row
+    Columns("P:P").Select
+    Selection.Delete Shift:=xlToLeft
+    
     
     'Remove "mm"
     Range("E2:E" & lastRow).Select
@@ -95,11 +113,16 @@ Sub packingList()
 
     
     'Calculate weight
-    Range("O1").Value = "Weight(oz)/Unit"
+    Range("O1").Value = "Weight(lb)/Unit"
     Range("O2").Select
-    ActiveCell.FormulaR1C1 = "=LEFT(RC[-11]/RC[-12]*16,4)"
+    ActiveCell.FormulaR1C1 = "=LEFT(RC[-11]/RC[-12],4)"
     Range("O2").Select
     Selection.AutoFill Destination:=Range("O2:O" & lastRow)
+    Range("P1").Value = "Weight(oz)/Unit"
+    Range("P2").Select
+    ActiveCell.FormulaR1C1 = "=LEFT(RC[-11]/RC[-12]*16,4)"
+    Range("P2").Select
+    Selection.AutoFill Destination:=Range("P2:P" & lastRow)
 
         
     'Sort
@@ -126,7 +149,9 @@ Sub packingList()
     Range("E1").Value = "l/Case"
     Range("F1").Value = "w/Case"
     Range("G1").Value = "h/Case"
-    Range("H1").Value = "oz"
+    Range("H1").Value = "Weight(lb)/Qty"
+    Range("I1").Value = "Weight(lb)/Case"
+    Range("J1").Value = "oz"
     
     Range("B2").Select
     ActiveCell.FormulaR1C1 = "=VLOOKUP(Sheet3!RC1,Sheet2!C1:C15,9,0)"
@@ -141,7 +166,11 @@ Sub packingList()
     Range("G2").Select
     ActiveCell.FormulaR1C1 = "=VLOOKUP(Sheet3!RC1,Sheet2!C1:C15,14,0)"
     Range("H2").Select
+    ActiveCell.FormulaR1C1 = "=VLOOKUP(Sheet3!RC1,Sheet2!C1:C15,3,0)"
+    Range("I2").Select
     ActiveCell.FormulaR1C1 = "=VLOOKUP(Sheet3!RC1,Sheet2!C1:C15,15,0)"
+    Range("J2").Select
+    ActiveCell.FormulaR1C1 = "=VLOOKUP(Sheet3!RC1,Sheet2!C1:C15,16,0)"
     
     
     
