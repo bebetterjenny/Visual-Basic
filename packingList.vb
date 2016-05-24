@@ -173,7 +173,5 @@ Sub packingList()
     MsgBox ("查到新产品添加到Sheet3中，然后自动填充完整")
     
     
+    
 End Sub
-
-
-
