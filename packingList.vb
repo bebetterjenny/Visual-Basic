@@ -120,7 +120,7 @@ Sub packingList()
     Selection.AutoFill Destination:=Range("O2:O" & lastRow)
     Range("P1").Value = "Weight(oz)/Unit"
     Range("P2").Select
-    ActiveCell.FormulaR1C1 = "=LEFT(RC[-11]/RC[-12]*16,4)"
+    ActiveCell.FormulaR1C1 = "=LEFT(RC[-1]*16,4)"
     Range("P2").Select
     Selection.AutoFill Destination:=Range("P2:P" & lastRow)
 
@@ -154,23 +154,23 @@ Sub packingList()
     Range("J1").Value = "oz"
     
     Range("B2").Select
-    ActiveCell.FormulaR1C1 = "=VLOOKUP(Sheet3!RC1,Sheet2!C1:C15,9,0)"
+    ActiveCell.FormulaR1C1 = "=VLOOKUP(Sheet3!RC1,Sheet2!C1:C16,9,0)"
     Range("C2").Select
-    ActiveCell.FormulaR1C1 = "=VLOOKUP(Sheet3!RC1,Sheet2!C1:C15,10,0)"
+    ActiveCell.FormulaR1C1 = "=VLOOKUP(Sheet3!RC1,Sheet2!C1:C16,10,0)"
     Range("D2").Select
-    ActiveCell.FormulaR1C1 = "=VLOOKUP(Sheet3!RC1,Sheet2!C1:C15,11,0)"
+    ActiveCell.FormulaR1C1 = "=VLOOKUP(Sheet3!RC1,Sheet2!C1:C16,11,0)"
     Range("E2").Select
-    ActiveCell.FormulaR1C1 = "=VLOOKUP(Sheet3!RC1,Sheet2!C1:C15,12,0)"
+    ActiveCell.FormulaR1C1 = "=VLOOKUP(Sheet3!RC1,Sheet2!C1:C16,12,0)"
     Range("F2").Select
-    ActiveCell.FormulaR1C1 = "=VLOOKUP(Sheet3!RC1,Sheet2!C1:C15,13,0)"
+    ActiveCell.FormulaR1C1 = "=VLOOKUP(Sheet3!RC1,Sheet2!C1:C16,13,0)"
     Range("G2").Select
-    ActiveCell.FormulaR1C1 = "=VLOOKUP(Sheet3!RC1,Sheet2!C1:C15,14,0)"
+    ActiveCell.FormulaR1C1 = "=VLOOKUP(Sheet3!RC1,Sheet2!C1:C16,14,0)"
     Range("H2").Select
-    ActiveCell.FormulaR1C1 = "=VLOOKUP(Sheet3!RC1,Sheet2!C1:C15,3,0)"
+    ActiveCell.FormulaR1C1 = "=VLOOKUP(Sheet3!RC1,Sheet2!C1:C16,3,0)"
     Range("I2").Select
-    ActiveCell.FormulaR1C1 = "=VLOOKUP(Sheet3!RC1,Sheet2!C1:C15,15,0)"
+    ActiveCell.FormulaR1C1 = "=VLOOKUP(Sheet3!RC1,Sheet2!C1:C16,15,0)"
     Range("J2").Select
-    ActiveCell.FormulaR1C1 = "=VLOOKUP(Sheet3!RC1,Sheet2!C1:C15,16,0)"
+    ActiveCell.FormulaR1C1 = "=VLOOKUP(Sheet3!RC1,Sheet2!C1:C16,16,0)"
     
     
     
