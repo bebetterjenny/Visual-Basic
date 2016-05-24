@@ -164,7 +164,7 @@ Sub packingList()
     Range("G2").Select
     ActiveCell.FormulaR1C1 = "=VLOOKUP(Sheet3!RC1,Sheet2!C1:C16,14,0)"
     Range("H2").Select
-    ActiveCell.FormulaR1C1 = "=VLOOKUP(Sheet3!RC1,Sheet2!C1:C16,3,0)"
+    ActiveCell.FormulaR1C1 = "=VLOOKUP(Sheet3!RC1,Sheet2!C1:C16,4,0)"
     Range("I2").Select
     ActiveCell.FormulaR1C1 = "=VLOOKUP(Sheet3!RC1,Sheet2!C1:C16,15,0)"
     Range("J2").Select
