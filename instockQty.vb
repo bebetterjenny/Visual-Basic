@@ -10,8 +10,7 @@ Sub instockQty()
 '3. put Li in the Sheet2, then run
 '3. ChinaTo的LIcopy到Sheet2，然后运行
 
-'4. Copy and paste value, sort in sku, delete the last column
-'4. 粘贴值，按sku排序，删除最后一列
+'4. 检查，删掉不需要的列
 
 
 'copy from full
