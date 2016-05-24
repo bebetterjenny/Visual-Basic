@@ -44,16 +44,14 @@ Sub packingList()
     i = 1
     
     Do Until i = lastRow
-    
-        If IsEmpty(Range("B" & i).Value) = True Then
+        i = i + 1
+        If IsEmpty(Range("B" & i).Value) = True Or InStr(1, Range("A" & i), "Z") = 1 Or InStr(Range("A" & i), "SCP102") Or InStr(Range("A" & i), "Carton") > 0 Then
             Rows(i & ":" & i).Select
             Selection.Delete Shift:=xlUp
             i = i - 1
             lastRow = lastRow - 1
             'MsgBox (i)
         End If
-        i = i + 1
-        
     Loop
     
     
