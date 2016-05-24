@@ -105,7 +105,7 @@ Sub packingList()
     'Sort
     lastRow = Cells(Rows.Count, 1).End(xlUp).Row
     ActiveWorkbook.Worksheets("Sheet2").Sort.SortFields.Clear
-    ActiveWorkbook.Worksheets("Sheet2").Sort.SortFields.Add Key:=Range("B2:B" & lastRow) _
+    ActiveWorkbook.Worksheets("Sheet2").Sort.SortFields.Add Key:=Range("A2:A" & lastRow) _
         , SortOn:=xlSortOnValues, Order:=xlAscending, DataOption:=xlSortNormal
     With ActiveWorkbook.Worksheets("Sheet2").Sort
         .SetRange Range("A1:O" & lastRow)
