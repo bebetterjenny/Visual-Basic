@@ -1,8 +1,8 @@
 Sub customerWeeklyFile()
 
-'1. Copy from full customer file into Sheet1
-'2. Find the first "*5/*/2016"(起始日期) in column Y and delete all the above rows in order to avoid overflow
-'3. Change the date in the 8 loops
+'1. 从原始customer weekly file中copy到Sheet1，然后copy全部paste value（避免日期格式转换成数字）
+'2. Y列中找到第一个"*5/*/2016"(起始日期)删掉之前所有行（减小无效数据，避免overflow）
+'3. 按顺序更改代码中八个日期为本周范围
         
 Sheet2.Select
 Sheet2.Cells.ClearContents
