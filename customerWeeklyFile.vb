@@ -1,7 +1,7 @@
 Sub customerWeeklyFile()
 
 'Copy from full customer file into Sheet1
-'Find the first "*5/*/2016" in column Y and delete all the above rows in order to avoid overflow
+'Find the first "*5/*/2016"(起始日期) in column Y and delete all the above rows in order to avoid overflow
 'Change the date in the 8 loops
         
 Sheet2.Select
