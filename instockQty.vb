@@ -1,7 +1,7 @@
 Sub instockQty()
 
 
-'1. make sure there are 4 sheets in the oringinal workbook
+'1. make sure there are 4 sheets in the oringinal workbook (unhide if necessary)
 '1. 保证Sheet1,Sheet2,Sheet3,Sheet4按顺序放
 
 '2. put full in the Sheet1
