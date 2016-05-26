@@ -141,3 +141,26 @@ For i = 2 To lastRow
         copyRowNumber = copyRowNumber + 1
     End If
 Next
+
+    Range("O1").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Sheet3").Select
+    Range("A1").Select
+    ActiveSheet.Paste
+    Sheets("Sheet1").Select
+    Range("Y1").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Sheet3").Select
+    Range("B1").Select
+    ActiveSheet.Paste
+    Sheets("Sheet1").Select
+    Range("Z1").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Sheet3").Select
+    Range("C1").Select
+    ActiveSheet.Paste
+    
+    End Sub
