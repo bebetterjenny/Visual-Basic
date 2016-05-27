@@ -1,9 +1,5 @@
 Sub Jo_insert_air()
-'
-' Jo_insert1 Macro
-'
 
-'
     ActiveCell.Rows("1:1").EntireRow.Select
     Selection.Insert Shift:=xlDown, CopyOrigin:=xlFormatFromLeftOrAbove
     ActiveCell.FormulaR1C1 = "=R[1]C[3] & CHAR(10) & R[1]C[2]"
@@ -31,11 +27,7 @@ Sub Jo_insert_air()
 
 End Sub
 Sub Jo_insert_sea()
-'
-' Jo_insert1 Macro
-'
 
-'
     ActiveCell.Rows("1:1").EntireRow.Select
     Selection.Insert Shift:=xlDown, CopyOrigin:=xlFormatFromLeftOrAbove
     ActiveCell.FormulaR1C1 = "=R[1]C[3] & CHAR(10) & R[1]C[2]"
