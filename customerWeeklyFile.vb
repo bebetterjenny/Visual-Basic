@@ -142,12 +142,14 @@ For i = 2 To lastRow
     End If
 Next
 
+    Sheets("Sheet1").Select
     Range("O1").Select
     Application.CutCopyMode = False
     Selection.Copy
     Sheets("Sheet3").Select
     Range("A1").Select
     ActiveSheet.Paste
+    
     Sheets("Sheet1").Select
     Range("Y1").Select
     Application.CutCopyMode = False
@@ -155,6 +157,7 @@ Next
     Sheets("Sheet3").Select
     Range("B1").Select
     ActiveSheet.Paste
+    
     Sheets("Sheet1").Select
     Range("Z1").Select
     Application.CutCopyMode = False
