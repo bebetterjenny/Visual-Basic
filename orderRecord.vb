@@ -248,15 +248,10 @@ Sub orderRecord()
                             End With
                         End If
                         MsgBox ("branch")
-                    
                     End If
-                 
                 End If
                 
-                
-                
             Next k
-            
         Next j
     Next i
     
