@@ -13,10 +13,24 @@ Sub instockQty()
 '4. 检查，删掉不需要的列
 
 
-'copy from full
+'Sort full
 Dim lastRow As Integer
 lastRow = Sheet1.Cells(Rows.Count, 1).End(xlUp).Row
+Columns("A:AS").Select
+ActiveWorkbook.Worksheets("Sheet1").Sort.SortFields.Clear
+ActiveWorkbook.Worksheets("Sheet1").Sort.SortFields.Add Key:=Range("AB2:AB" & lastRow _
+    ), SortOn:=xlSortOnValues, Order:=xlAscending, DataOption:=xlSortNormal
+With ActiveWorkbook.Worksheets("Sheet1").Sort
+    .SetRange Range("A1:AS" & lastRow)
+    .Header = xlYes
+    .MatchCase = False
+    .Orientation = xlTopToBottom
+    .SortMethod = xlPinYin
+    .Apply
+End With
 
+
+'copy from full
 Sheet3.Select
 Sheet3.Cells.ClearContents
 
