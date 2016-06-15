@@ -118,7 +118,7 @@ Let checkRange1 = "B" & i
 Let checkRange2 = "E" & i
 Let changeRange = "F" & i
 
-If (InStr(Sheet3.Range(checkRange1), "SBS") Or InStr(Sheet3.Range(checkRange2), "VR-")) And Sheet3.Range(checkRange2) > 3 Then
+If (InStr(Sheet3.Range(checkRange1), "SBS") Or InStr(Sheet3.Range(checkRange2), "VR-") Or InStr(Sheet3.Range(checkRange2), "SCP102-")) And Sheet3.Range(checkRange2) > 3 Then
 
     Sheet3.Range(changeRange).Value = 1
     
