@@ -264,7 +264,7 @@ Columns("G:G").Select
 Application.CutCopyMode = False
 Selection.Delete Shift:=xlToLeft
 
-Msgbox("1. 检查sbs，vr-，SCP102-;检查母体计算是否正确" & vbNewLine & "2. 删除A，C，D列")
+Msgbox("1. 检查sbs，vr-;检查母体计算是否正确" & vbNewLine & "2. 删除A，C，D列")
 
 
 End Sub
