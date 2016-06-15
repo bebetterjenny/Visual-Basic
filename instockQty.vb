@@ -1,21 +1,29 @@
 Sub instockQty()
 
 
-'1. make sure there are 4 sheets in the oringinal workbook (unhide if necessary)
-'1. 保证Sheet1,Sheet2,Sheet3,Sheet4按顺序放
+'1. NewShop总表copy到Sheet1
 
-'2. put full in the Sheet1
-'2. 总表copy到Sheet1
+'2. ChinaTo的LIcopy到Sheet2, 运行
 
-'3. put Li in the Sheet2, then run
-'3. ChinaTo的LIcopy到Sheet2，然后运行
+'3. instockQty在Sheet3
 
-'4. 检查，删掉不需要的列
+'4. Sheet的名字不要随便更改，如果做错了，删掉Sheet3和Sheet4重run即可
+
+
+
+'Create Sheet3 & Sheet4
+If Sheets.Count = 2 Then
+    Sheets.Add(After:=Sheets(Sheets.Count)).Name = "Sheet3"
+    Sheets.Add(After:=Sheets(Sheets.Count)).Name = "Sheet4"
+Else
+    MsgBox ("请保证只有2个Sheets，NewShop总表在Sheet1，ChinaTo的LI在Sheet2，Sheet的名字不要随便更改！")
+    End
+End If
 
 
 'Sort full
 Dim lastRow As Integer
-lastRow = Sheet1.Cells(Rows.Count, 1).End(xlUp).Row
+lastRow = Sheets("Sheet1").Cells(Rows.Count, 1).End(xlUp).Row
 Columns("A:AS").Select
 ActiveWorkbook.Worksheets("Sheet1").Sort.SortFields.Clear
 ActiveWorkbook.Worksheets("Sheet1").Sort.SortFields.Add Key:=Range("AB2:AB" & lastRow _
@@ -31,44 +39,44 @@ End With
 
 
 'copy from full
-Sheet3.Select
-Sheet3.Cells.ClearContents
+Sheets("Sheet3").Select
+Sheets("Sheet3").Cells.ClearContents
 
-Sheet1.Select
+Sheets("Sheet1").Select
 Columns("E:E").Select
 Selection.Copy
-Sheet3.Select
+Sheets("Sheet3").Select
 Columns("A:A").Select
 ActiveSheet.Paste
 
-Sheet1.Select
+Sheets("Sheet1").Select
 Columns("F:F").Select
 Selection.Copy
-Sheet3.Select
+Sheets("Sheet3").Select
 Columns("B:B").Select
 ActiveSheet.Paste
 
-Sheet1.Select
+Sheets("Sheet1").Select
 Columns("AB:AB").Select
 Selection.Copy
-Sheet3.Select
+Sheets("Sheet3").Select
 Columns("C:C").Select
 ActiveSheet.Paste
 
-Sheet1.Select
+Sheets("Sheet1").Select
 Columns("AL:AL").Select
 Selection.Copy
-Sheet3.Select
+Sheets("Sheet3").Select
 Columns("D:D").Select
 ActiveSheet.Paste
 
-Sheet1.Select
+Sheets("Sheet1").Select
 Columns("F:F").Select
 Selection.Copy
-Sheet3.Select
+Sheets("Sheet3").Select
 Columns("G:G").Select
 ActiveSheet.Paste
-Sheet3.Cells(1, 7).Value = "sku"
+Sheets("Sheet3").Cells(1, 7).Value = "sku"
 
 
 'remove "-W*C" in the sku
@@ -88,7 +96,7 @@ Range("E1").Select
 Selection.AutoFill Destination:=Range(autoFillRange)
 
 'replace #N/A to 0
-Sheet3.Cells(1, 5).Value = "qty"
+Sheets("Sheet3").Cells(1, 5).Value = "qty"
 Columns("E:E").Select
 Selection.Copy
 Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
@@ -101,7 +109,7 @@ Selection.Replace What:="#N/A", Replacement:="0", LookAt:=xlPart, _
     
     
 'caculate is_in_stock
-Sheet3.Cells(1, 6).Value = "is_in_stock"
+Sheets("Sheet3").Cells(1, 6).Value = "is_in_stock"
 Range("F2").Select
 ActiveCell.FormulaR1C1 = "=IF(RC[-1]>70,1,0)"
 Let autoFillRange = "F" & "2" & ":" & "F" & lastRow
@@ -125,16 +133,16 @@ Dim checkRange1 As String
 Dim checkRange2 As String
 Dim changRange As String
 'Dim lastRow As Integer
-lastRow = Sheet3.Cells(Rows.Count, 1).End(xlUp).Row
+lastRow = Sheets("Sheet3").Cells(Rows.Count, 1).End(xlUp).Row
 
 For i = 2 To lastRow
 Let checkRange1 = "B" & i
 Let checkRange2 = "E" & i
 Let changeRange = "F" & i
 
-If (InStr(Sheet3.Range(checkRange1), "SBS") Or InStr(Sheet3.Range(checkRange2), "VR-")) And Sheet3.Range(checkRange2) > 3 Then
+If (InStr(Sheets("Sheet3").Range(checkRange1), "SBS") Or InStr(Sheets("Sheet3").Range(checkRange2), "VR-")) And Sheets("Sheet3").Range(checkRange2) > 3 Then
 
-    Sheet3.Range(changeRange).Value = 1
+    Sheets("Sheet3").Range(changeRange).Value = 1
     
 End If
 Next
@@ -150,7 +158,7 @@ copyRowNumber = 1
 
 
 For i = 2 To lastRow
-    If (InStr(Sheet3.Range("A" & i), "simple") Or InStr(Sheet3.Range("A" & i), "Simple")) And InStr(Sheet3.Range("D" & i), "Catalog, Search") Then
+    If (InStr(Sheets("Sheet3").Range("A" & i), "simple") Or InStr(Sheets("Sheet3").Range("A" & i), "Simple")) And InStr(Sheets("Sheet3").Range("D" & i), "Catalog, Search") Then
         Rows(i & ":" & i).Select
         Selection.Copy
         Sheets("Sheet4").Select
@@ -197,10 +205,10 @@ Columns("G:J").Delete
 'set config is_in_stock
 
 'Dim lastRow As Integer
-lastRow = Sheet3.Cells(Rows.Count, 1).End(xlUp).Row
+lastRow = Sheets("Sheet3").Cells(Rows.Count, 1).End(xlUp).Row
 
 For i = 3 To lastRow
-    Sheet3.Range("G" & i).Select
+    Sheets("Sheet3").Range("G" & i).Select
     ActiveCell.FormulaR1C1 = "=R[-1]C[-1]"
 Next
 
@@ -215,8 +223,8 @@ Cells.Select
 Selection.RemoveSubtotal
 
 For i = 2 To lastRow
-    If Sheet3.Range("A" & i) = "configurable" Then
-        Sheet3.Range("F" & i).Select
+    If Sheets("Sheet3").Range("A" & i) = "configurable" Then
+        Sheets("Sheet3").Range("F" & i).Select
         ActiveCell.FormulaR1C1 = "=R[0]C[1]"
     End If
 Next
@@ -225,9 +233,9 @@ Next
 'Copy simple and Catalog, Search back into Sheet3
 
 Dim lastRowSheet3 As Integer
-lastRowSheet3 = Sheet3.Cells(Rows.Count, 1).End(xlUp).Row
+lastRowSheet3 = Sheets("Sheet3").Cells(Rows.Count, 1).End(xlUp).Row
 Dim lastRowSheet4 As Integer
-lastRowSheet4 = Sheet4.Cells(Rows.Count, 1).End(xlUp).Row
+lastRowSheet4 = Sheets("Sheet4").Cells(Rows.Count, 1).End(xlUp).Row
 
     Sheets("Sheet4").Select
     Rows(1 & ":" & lastRowSheet4).Select
@@ -237,9 +245,9 @@ lastRowSheet4 = Sheet4.Cells(Rows.Count, 1).End(xlUp).Row
     ActiveSheet.Paste
 
 
-	
+    
 'Sort
-lastRow = Sheet3.Cells(Rows.Count, 1).End(xlUp).Row
+lastRow = Sheets("Sheet3").Cells(Rows.Count, 1).End(xlUp).Row
 Columns("A:G").Select
 ActiveWorkbook.Worksheets("Sheet3").Sort.SortFields.Clear
 ActiveWorkbook.Worksheets("Sheet3").Sort.SortFields.Add Key:=Range("B2:B" & lastRow _
@@ -264,7 +272,11 @@ Columns("G:G").Select
 Application.CutCopyMode = False
 Selection.Delete Shift:=xlToLeft
 
-Msgbox("1. 检查sbs，vr-;检查母体计算是否正确" & vbNewLine & "2. 删除A，C，D列")
+Sheets("Sheet4").Select
+Sheets("Sheet4").Cells.ClearContents
+Sheets("Sheet3").Select
+
+MsgBox ("检查完后删除A，C，D列")
 
 
 End Sub
